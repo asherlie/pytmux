@@ -6,8 +6,8 @@ def test():
     s.focused_window.new_pane(True)
 
 # [[dir, [a, b, c]], [/home, [x, y]], [pwd, [z]]]
-def open_files(files):
-    s = tmux.session('untitled')
+def open_files(session_name, files):
+    s = tmux.session(session_name)
     for vim_session in files:
         s.focused_window.focused_pane.run('cd ' + vim_session[0])
         s.focused_window.focused_pane.run('vim')
@@ -25,4 +25,4 @@ def open_files(files):
     s.focused_window.focused_pane.run('exit')
 # s.focused_window.new_pane(True)
 
-open_files([['~/cashnet', ['nc.c']], ['~/ashdrop', ['ad.c', 'fs.h', 'kq.c']], ['~/libashnet', ['ashnetd.c']], ['~/stdash', ['ex.c']], ['~/persistent_map', ['ph.c']]])
+open_files('cashnetdrop', [['~/cashnet', ['nc.c']], ['~/ashdrop', ['ad.c', 'fs.h', 'kq.c']], ['~/libashnet', ['ashnetd.c']], ['~/stdash', ['ex.c']], ['~/persistent_map', ['ph.c']]])
